@@ -1,0 +1,80 @@
+<div class="content-wrap">
+    <form id="queryBox" class="form-inline">
+        <div class="form-group">
+            <label for="sportNameQ">运动名</label>
+            <input type="text" class="form-control" id="sportNameQ" name="sportNameQ">
+        </div>
+        <div class="form-group">
+            <label for="sportHotQ">热量</label>
+           <input type="text" class="form-control" id="sportHotQ" name="sportHotQ">
+        </div>
+        <button type="button" class="btn btn-primary query-btn">查询</button>
+        <button type="button" class="btn btn-primary add-btn">新建</button>
+         <button type="button" class="btn btn-primary delall-btn">批量删除</button>
+    </form>
+     <table class="table table-bordered table-striped task-table" id="listBox">
+        <thead>
+            <tr>
+                 <th width="5%"><input type="checkbox" value="1"  class="all-check" /></th>
+                <th width="10%">预览</th>
+                <th width="30%">运动名</th>
+                <th width="30%">单位</th>
+                <th>热量</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="listBody">
+        </tbody>
+    </table>
+
+    <div id="editBox" style="display:none;">
+
+    </div>
+
+    <div id="delBox" style="display:none;">
+        删除无法恢复，确定要删除？
+    </div>
+
+    <p class="alert alert-success" id="bgMsg" style="opacity:0">操作成功!</p>
+</div>
+
+<script id="editFormTemp" type="text/x-jquery-tmpl">
+    <div class="container-fluid">
+    <div class="row">
+    <form id="editform" role="form">
+       {{if _id}}
+            <input type="hidden" name="_id" value=${_id} />
+       {{/if}}
+      <div class="col-xs-12">
+        <div class="form-group">
+        <label for="foodName">运动名</label>
+              <input type="text" class="form-control" id="sportName" name="name" value="${name}">
+        </div>
+        <div class="form-group">
+        <label for="foodHot">单位</label>
+              <input type="text" class="form-control" id="sportHot" name="unit" value="${unit}">
+        </div>
+        <div class="form-group">
+        <label for="foodHot">热量</label>
+              <input type="text" class="form-control" id="sportHot" name="hot" value="${hot}">
+        </div>
+      </div>
+    </form>
+    </div>
+    </div>
+</script>
+
+<script id="listTemp" type="text/x-jquery-tmpl">
+    <tr data-itemid="${_id}" data-itemname="${name}">
+        <td width="5%"><input class="item-check" type="checkbox"/></td>
+        <td width="10%"><img src='/sport/${fileName}'></td>
+        <td width="15%">${name}</td>
+        <td >${unit}</td>
+        <td >${hot}</td>
+        <td>
+            <a href="javascript:;" type="button" class="edit-btn">编辑</a>
+            <a href="javascript:;" type="button" class="del-btn">删除</a>
+        </td>
+    </tr>
+</script>
+
